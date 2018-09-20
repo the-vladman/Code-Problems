@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>prime factor decomposition</h2>
+<script>
+function primeFactor(n){
+    // n == 1, n < 1, n != Number
+    if (n < 2) return '';
+    //number of 2s that divide n
+    let countsTwo = 0;
+    while (n % 2 == 0) {
+        countsTwo++;
+        n = n / 2
+    }
+    let start = '';
+    if (countsTwo > 0) {
+        let numbersTwo = countsTwo > 1 ? `(2**${countsTwo})`: '(2)';
+        start = numbersTwo;
+    }
+    // n must be odd at this point
+    let inMiddle = '';
+    let sqtrn = Math.round(Math.sqrt(n));
+    for (let i = 3; i <= sqtrn; i = i + 2) {
+        let counter = 0;
+        // Divide prime
+        while (n % i == 0) {
+            counter++;
+            n = n / i;
+        }
+        if (counter > 0) {
+            let value = counter > 1 ? `(${i}**${counter})`: `(${i})`;
+            inMiddle += value;
+        }
+    }
+    //prime number greater than 2 
+    let last = n > 2 ? `(${n})` : '';
+    return `${start}${inMiddle}${last}`;
+}
+
+console.log('test 1', primeFactor(0));
+console.log('test 2', primeFactor(1));
+console.log('test 3', primeFactor(315));
+console.log('test 4', primeFactor(86240));
+console.log('test 5', primeFactor(11));
+console.log('test 6', primeFactor(350));
+console.log('test 7', primeFactor('a'));
+console.log('test 8', primeFactor([]));
+
+</script>
+
+</body>
+</html> 
