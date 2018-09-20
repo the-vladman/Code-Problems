@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Compare squares</h2>
+<script>
+// Compare Function
+function compa(a, b) {
+    // Null Case
+    if (!a || !b ) return false;
+    // Different size
+    if (a.length != b.length) return false;
+    // Square array A
+    let squareA = a.map(e => e*e);
+    // Sort Arrays
+    let sortA = squareA.sort(function(a, b){return a - b});
+    let sortB = b.sort(function(a, b){return a - b});
+    // compare sorted Arrays
+    return isEquals(sortA, sortB);
+}
+
+// Verify Array values Function
+function isEquals(a, b){
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) {
+            return false;            
+        }
+    }
+    return true;
+}
+
+const a0= [121, 144, 19, 161, 19, 144, 19, 11]
+const b0 = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+console.log('test 0',compa(a0, b0));
+
+const a1 = [121, 144, 19, 161, 19, 144, 19, 11]
+const b1 = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
+console.log('test 1',compa(a1, b1));
+
+const a2 = [121, 144, 19, 161, 19, 144, 19, 11]
+const b2 = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+console.log('test 2',compa(a2, b2));
+
+const a3 = null;
+const b3 = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+console.log('test 3',compa(a3, b3));
+
+const a4 = 's';
+const b4 = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+console.log('test 4',compa(a4, b4));
+
+const a5 = ['s', 144, 19, 161, 19, 144, 19, 11]
+const b5 = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+console.log('test 5',compa(a5, b5));
+
+const a6 = [121, 144, 19, 161, 19, 144, 19, 11]
+const b6 = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+console.log('test 6',compa(a6, b6));
+
+const a7 = []
+const b7 = []
+console.log('test 7',compa(a7, b7));
+</script>
+
+</body>
+</html> 
